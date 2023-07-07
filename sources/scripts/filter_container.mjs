@@ -1,19 +1,19 @@
 class Filter_container{
-    constructor (recipes) {
-        this.recipes = recipes
+    constructor () {
+        
     }
 
-    load_filters() {
-        this.load_ingredients();
-        this.load_appareil();
-        this.load_ustenciles();
+    load_filters(recipes) {
+        this.load_ingredients(recipes);
+        this.load_appareil(recipes);
+        this.load_ustenciles(recipes);
     }
 
-    load_ingredients() {
+    load_ingredients(recipes) {
         //-FILTRES INGREDIENTS------------------------------------------------------------------------
         const filter_ingredients = document.getElementById("filter_ingredients");
         let ingredients_list = []
-        this.recipes.forEach(element => {
+        recipes.forEach(element => {
             element.ingredients.forEach(items => {
                 if(!ingredients_list.includes(items.ingredients))
                 {
@@ -44,11 +44,11 @@ class Filter_container{
 
     }
 
-    load_appareil() {
+    load_appareil(recipes) {
         //-FILTRES APPAREIL ------------------------------------------------------------------------
         const filter_appareils = document.getElementById("filter_appareils");
         let appareil_list = []
-        this.recipes.forEach(element => {
+        recipes.forEach(element => {
               
             if(!appareil_list.includes(element.appliance))
             {
@@ -78,11 +78,11 @@ class Filter_container{
   
     }
 
-    load_ustenciles() {
+    load_ustenciles(recipes) {
         //-FILTRES USTENSILS------------------------------------------------------------------------
         const filter_ustensils = document.getElementById("filter_ustenciles");
         let ustensils_list = []
-        this.recipes.forEach(element => {
+        recipes.forEach(element => {
             element.ustensils.forEach(items => {
                 
                 if(!ustensils_list.includes(items))
