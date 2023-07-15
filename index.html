@@ -15,7 +15,7 @@
             <img class="header_img" src="sources/images/Mask group.png">
             <img class="header_logo" src="sources/images/Logo.png">
             <p class="header_text">CHERCHEZ PARMI PLUS DE 1500 RECETTES DU QUOTIDIEN,SIMPLES ET DÉLICIEUSES</p>
-            <input class="header_search" type="text" placeholder="recherchez une recette , un ingrédient...">
+            <input id="header_search" class="header_search" type="text" placeholder="recherchez une recette , un ingrédient...">
             <i class="fa-solid fa-magnifying-glass"></i>
            
         </div>
@@ -28,8 +28,11 @@
                     <p>ingrédient</p>
                     <i class="fa-solid fa-chevron-down"></i>
                     <div id="filter_ingredients" class="extend">
-                        <input type="text" class="filter_input" placeholder="Ingrédient">
+                        <input id="ingredient_input" type="text" class="filter_input" placeholder="Ingrédient">
                         <i class="fa-solid fa-magnifying-glass"></i>
+                        <div id="filter_ingredient_items">
+                            
+                        </div>
                     </div>
                    
                          
@@ -39,8 +42,11 @@
                     <p>Appareils</p>
                     <i class="fa-solid fa-chevron-down"></i>
                         <div id="filter_appareils" class="extend">
-                            <input type="text" class="filter_input" placeholder="Appareils">
+                            <input id="appareil_input" type="text" class="filter_input" placeholder="Appareils">
                             <i class="fa-solid fa-magnifying-glass"></i>
+                            <div id="filter_appareils_items">
+                                
+                            </div>
                         </div>
                     
                 </div>
@@ -49,8 +55,11 @@
                     <p>Ustenciles</p>
                     <i class="fa-solid fa-chevron-down"></i>
                     <div id="filter_ustenciles" class="extend">
-                        <input type="text" class="filter_input" placeholder="Ustenciles">
+                        <input id="ustencil_input" type="text" class="filter_input" placeholder="Ustenciles">
                         <i class="fa-solid fa-magnifying-glass"></i>
+                        <div id="filter_ustensils_items">
+
+                        </div>
                     </div>
                 </div>
             </div>
@@ -58,8 +67,11 @@
 
 
 
-        <p class="nav_recettes">1500 recettes</p>
+        <p class="nav_recettes">50 recettes</p>
     </nav>
+    <div id="active_filters" class="active_filters">
+        
+    </div>
     <article>
         
     </article>

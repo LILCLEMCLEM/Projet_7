@@ -1,3 +1,4 @@
+
 class Filter_container{
     constructor () {
         
@@ -11,13 +12,13 @@ class Filter_container{
 
     load_ingredients(recipes) {
         //-FILTRES INGREDIENTS------------------------------------------------------------------------
-        const filter_ingredients = document.getElementById("filter_ingredients");
+        const filter_ingredients = document.getElementById("filter_ingredient_items");
         let ingredients_list = []
         recipes.forEach(element => {
             element.ingredients.forEach(items => {
                 if(!ingredients_list.includes(items.ingredients))
                 {
-                    ingredients_list.push(items.ingredient)
+                    ingredients_list.push(String(items.ingredient).toLowerCase())
                     
                 }
             });
@@ -36,7 +37,35 @@ class Filter_container{
 
             filter_ingredients.appendChild(item_list)
 
+            this.addlist(item_list)
+
             
+        })
+        const ingredientInput = document.getElementById("ingredient_input");
+
+        ingredientInput.addEventListener("input" , element => {
+            var filtered_list = [];
+            console.log(ingredientInput.value)
+            filter_ingredients.innerHTML = "";
+           
+            ingredients_list.forEach(element => {
+                if(element.includes(String(ingredientInput.value).toLowerCase())){filtered_list.push(element)}
+                
+            })
+           
+            console.log(ingredients_list)
+            
+            filtered_list.forEach(element => {
+                
+                const item_list = document.createElement("p");
+                item_list.setAttribute("class" , "item_list")
+                item_list.textContent = element;
+    
+                filter_ingredients.appendChild(item_list)
+                this.addlist(item_list)
+                
+           })
+           return filter_ingredients
         })
         
         return filter_ingredients
@@ -46,13 +75,13 @@ class Filter_container{
 
     load_appareil(recipes) {
         //-FILTRES APPAREIL ------------------------------------------------------------------------
-        const filter_appareils = document.getElementById("filter_appareils");
+        const filter_appareils = document.getElementById("filter_appareils_items");
         let appareil_list = []
         recipes.forEach(element => {
               
             if(!appareil_list.includes(element.appliance))
             {
-                appareil_list.push(element.appliance)
+                appareil_list.push(String(element.appliance).toLowerCase())
                       
             }
             
@@ -67,10 +96,45 @@ class Filter_container{
         appareil_list.forEach(element => {
             const item_list = document.createElement("p");
             item_list.setAttribute("class" , "item_list")
+            item_list.setAttribute("id" , "item_list")
             item_list.textContent = element;
             filter_appareils.appendChild(item_list)
+
+            this.addlist(item_list)
   
               
+        })
+
+        const appareilInput = document.getElementById("appareil_input");
+        
+        appareilInput.addEventListener("input" , element => {
+            var filtered_list = [];
+            console.log(appareilInput.value)
+            filter_appareils.innerHTML = "";
+           
+            appareil_list.forEach(element => {
+                if(element.includes(String(appareilInput.value).toLowerCase())){filtered_list.push(element)}
+                
+            })
+           
+            console.log(appareil_list)
+            
+            filtered_list.forEach(element => {
+                
+                const item_list = document.createElement("p");
+                item_list.setAttribute("class" , "item_list")
+                item_list.setAttribute("id" , "item_list")
+                item_list.textContent = element;
+    
+                filter_appareils.appendChild(item_list)
+
+                this.addlist(item_list)
+                
+                
+           })
+           
+           
+           return filter_appareils
         })
           
         return filter_appareils
@@ -80,14 +144,14 @@ class Filter_container{
 
     load_ustenciles(recipes) {
         //-FILTRES USTENSILS------------------------------------------------------------------------
-        const filter_ustensils = document.getElementById("filter_ustenciles");
+        const filter_ustensils = document.getElementById("filter_ustensils_items");
         let ustensils_list = []
         recipes.forEach(element => {
             element.ustensils.forEach(items => {
                 
                 if(!ustensils_list.includes(items))
                 {
-                    ustensils_list.push(items)
+                    ustensils_list.push(String(items).toLowerCase())
                      
                 }
             });
@@ -105,13 +169,66 @@ class Filter_container{
             item_list.textContent = element;
  
             filter_ustensils.appendChild(item_list)
+
+            this.addlist(item_list)
  
              
         })
-         
+
+        //ADDED-----------------------------------------------------
+        const ustencilsInput = document.getElementById("ustencil_input");
+        
+        ustencilsInput.addEventListener("input" , element => {
+            var filtered_list = [];
+            console.log(ustencilsInput.value)
+            filter_ustensils.innerHTML = "";
+           
+            ustensils_list.forEach(element => {
+                if(element.includes(String(ustencilsInput.value).toLowerCase())){filtered_list.push(element);}              
+            })
+           
+            console.log(filtered_list)
+            
+            filtered_list.forEach(element => {
+                
+                const item_list = document.createElement("p");
+                item_list.setAttribute("class" , "item_list")
+                item_list.textContent = element;
+    
+                filter_ustensils.appendChild(item_list)
+
+                this.addlist(item_list)
+                
+           })
+           return filter_ustensils
+        })
+         //6-------------------------------------------------------------
         return filter_ustensils
 
     }
+
+   addlist(item) {
+        //add verification for doublons
+        item.addEventListener("click" , () => {
+        const filtered = document.getElementById("active_filters");
+        const container = document.createElement("div");
+        container.setAttribute("class" , "filterActive");
+        container.setAttribute("id" , item.innerHTML );
+        const text = document.createElement("p");
+        
+        const icon = document.createElement("i");
+        icon.setAttribute("class" , "fa-solid fa-xmark")
+        icon.addEventListener("click" , () => {
+            close = document.getElementById(item.innerHTML);
+            
+            close.remove()
+        })
+        text.innerText = item.innerHTML;
+        container.appendChild(text);
+        container.appendChild(icon);
+        filtered.appendChild(container);
+    })
+   }
 }
 
 export default Filter_container;
