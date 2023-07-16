@@ -25,8 +25,8 @@ class Filter_container{
         });
 
        
-        ingredients_list = ingredients_list.filter(function(item) {
-            return ingredients_list.hasOwnProperty(item) ? false : (ingredients_list[item] = true);
+        ingredients_list = ingredients_list.filter(function(item, pos, self) {
+            return self.indexOf(item) == pos;
         })
 
         
@@ -88,8 +88,8 @@ class Filter_container{
         });
   
          
-        appareil_list = appareil_list.filter(function(item) {
-            return appareil_list.hasOwnProperty(item) ? false : (appareil_list[item] = true);
+        appareil_list = appareil_list.filter(function(item, pos, self) {
+            return self.indexOf(item) == pos;
         })
   
           
@@ -158,8 +158,8 @@ class Filter_container{
         });
  
         
-        ustensils_list = ustensils_list.filter(function(item) {
-            return ustensils_list.hasOwnProperty(item) ? false : (ustensils_list[item] = true);
+        ustensils_list = ustensils_list.filter(function(item, pos, self) {
+            return self.indexOf(item) == pos;
         })
  
          
