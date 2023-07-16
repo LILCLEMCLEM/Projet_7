@@ -10,7 +10,7 @@ const algo = new algorithm();
 recipe_container.load_recipes(recipes);
 filter_container.load_filters(recipes)
 
-algo.searchbar_getlen();
+algo.searchbar_event();
 
 
 
