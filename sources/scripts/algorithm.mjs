@@ -1,5 +1,5 @@
 import { recipes } from "./recipes.mjs";
-
+import Recipes_Container from "./Recipes Container.mjs"
 class algorithm {
     constructor (){this.search_length = 0;}
     
@@ -28,10 +28,12 @@ class algorithm {
             }
         })
 
-
         
         console.log(searchbar_list)
-        
+        let R = new Recipes_Container()
+        R.load_recipes(recipes).filter(element => {
+            return searchbar_list.includes(element.id)
+        })
     }
 }
 
