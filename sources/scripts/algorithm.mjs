@@ -28,7 +28,6 @@ class algorithm {
             }
         })
 
-
         
         console.log(searchbar_list)
         
