@@ -46,6 +46,7 @@ class algorithm {
         })
 
 
+
         
         //fonction pour filtrer les doublons dans la liste
         console.log(searchbar_list)
