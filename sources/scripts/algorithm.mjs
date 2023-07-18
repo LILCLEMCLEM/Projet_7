@@ -7,6 +7,7 @@ class algorithm {
     }
     
     searchbar_event() {
+        const recipes_value = document.getElementById("nav_recettes")
         //fonction pour récupérer la taille de la chaine de caractère inséré dans la searchbar
         //si elle est > 2 , alors on filtres les données
         const inputSearchBar = document.getElementById("header_search");
@@ -19,11 +20,13 @@ class algorithm {
             }
             else {
                 this.R.load_recipes(recipes);
+                recipes_value.innerText = "50 recettes";
             }
         })    
     }
 
     searchbar_filter_items(input) {
+        const recipes_value = document.getElementById("nav_recettes")
         //fonction pour filtrer les items selon la searchbar et les filtres
         var searchbar_list = [];
         console.log(input);
@@ -56,6 +59,7 @@ class algorithm {
         //------------------------------------------------
 
         console.log(searchbar_list)
+        recipes_value.innerText = String(searchbar_list.length) + " recettes";
         //rechargement de la partie cartes avec les éléments trié
         this.R.load_recipes_by_id(recipes , searchbar_list)
         
