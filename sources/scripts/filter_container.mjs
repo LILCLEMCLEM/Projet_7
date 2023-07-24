@@ -37,7 +37,7 @@ class Filter_container{
 
             filter_ingredients.appendChild(item_list)
 
-            this.addlist(item_list)
+            this.addToList(item_list)
 
             
         })
@@ -62,7 +62,7 @@ class Filter_container{
                 item_list.textContent = element;
     
                 filter_ingredients.appendChild(item_list)
-                this.addlist(item_list)
+                this.addToList(item_list)
                 
            })
            return filter_ingredients
@@ -100,7 +100,7 @@ class Filter_container{
             item_list.textContent = element;
             filter_appareils.appendChild(item_list)
 
-            this.addlist(item_list)
+            this.addToList(item_list)
   
               
         })
@@ -128,7 +128,7 @@ class Filter_container{
     
                 filter_appareils.appendChild(item_list)
 
-                this.addlist(item_list)
+                this.addToList(item_list)
                 
                 
            })
@@ -170,7 +170,7 @@ class Filter_container{
  
             filter_ustensils.appendChild(item_list)
 
-            this.addlist(item_list)
+            this.addToList(item_list)
  
              
         })
@@ -197,7 +197,7 @@ class Filter_container{
     
                 filter_ustensils.appendChild(item_list)
 
-                this.addlist(item_list)
+                this.addToList(item_list)
                 
            })
            return filter_ustensils
@@ -207,7 +207,7 @@ class Filter_container{
 
     }
 
-   addlist(item) {
+   addToList(item) {
         //add verification for doublons
         item.addEventListener("click" , () => {
         const filtered = document.getElementById("active_filters");

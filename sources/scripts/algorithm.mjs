@@ -35,9 +35,10 @@ class algorithm {
         recipes.forEach(element => {
             if(String(element.name).toLowerCase().includes(input)){
                 searchbar_list.push(element.id);
-            }
+                
+            } 
 
-            if(String(element.description).toLowerCase().includes(input)) {
+            else if(String(element.description).toLowerCase().includes(input)) {
                 searchbar_list.push(element.id);
             }
 
