@@ -8,7 +8,7 @@ class Recipes_Container{
         recette_section.innerHTML = ""
         recipes.forEach(element => {
             
-                let Existe = 0;
+                let Existe = false;
                 const filtered = document.getElementById("active_filters");
                 //add-------------------------------------------- 
                 if(filtered.childElementCount > 0) {
@@ -16,26 +16,26 @@ class Recipes_Container{
                         element.ingredients.forEach(items =>{
                         
                             if(child.innerText == String(items.ingredient).toLowerCase()) {
-                                Existe = 1;
+                                Existe = true;
                             }
                         })
 
                         element.ustensils.forEach(items => {
                             console.log(items)
                             if(child.innerText == String(items).toLowerCase()) {
-                                Existe = 1;
+                                Existe = true;
                             }
                         })
 
                         if(child.innerText == String(element.appliance).toLowerCase()) {
-                            Existe = 1;
+                            Existe = true;
                         }
                     }
                 }
 
 
                 //----------------------------------------------------
-                if(Existe == 1 || filtered.childElementCount == 0) {
+                if(Existe == true || filtered.childElementCount == 0) {
             
             //création de la carte recette
             const card = document.createElement("section");

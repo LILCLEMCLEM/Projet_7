@@ -1,6 +1,8 @@
 import Recipes_Container from "./Recipes Container.mjs";
 import { recipes } from "./recipes.mjs";
 import algorithm from "./algorithm.mjs";
+//test
+
 class Filter_container {
   constructor() {}
 
@@ -13,9 +15,7 @@ class Filter_container {
 
   load_ingredients(recipes) {
     //-FILTRES INGREDIENTS------------------------------------------------------------------------
-    const filter_ingredients = document.getElementById(
-      "filter_ingredient_items"
-    );
+    const filter_ingredients = document.getElementById("filter_ingredient_items");
     let ingredients_list = [];
     recipes.forEach((element) => {
       element.ingredients.forEach((items) => {
@@ -197,7 +197,7 @@ class Filter_container {
       //end doublons
 
       let tc = new Recipes_Container();     
-      let al = new algorithm()
+      let al = new algorithm();
       const inputSearchBar = document.getElementById("header_search");
       const container = document.createElement("div");
       container.setAttribute("class", "filterActive");
