@@ -1,9 +1,12 @@
 import { recipes } from "./recipes.mjs";
 import Recipes_Container from "./Recipes Container.mjs"
+import Filter_container from "./filter_container.mjs";
+
 class algorithm {
     constructor (){
         this.search_length = 0;
         this.R = new Recipes_Container()
+        
     }
     
     searchbar_event() {
@@ -20,7 +23,8 @@ class algorithm {
             }
             else {
                 this.R.load_recipes(recipes);
-                recipes_value.innerText = "50 recettes";
+                this.setRecettesValue()
+                updateFilters();
             }
         })    
     }
@@ -56,7 +60,7 @@ class algorithm {
         })
 
 
-
+        
         
         //fonction pour filtrer les doublons dans la liste
         
@@ -65,11 +69,21 @@ class algorithm {
         })
         //------------------------------------------------
 
-        console.log(searchbar_list)
-        recipes_value.innerText = String(searchbar_list.length) + " recettes";
-        //rechargement de la partie cartes avec les éléments trié
-        this.R.load_recipes_by_id(recipes , searchbar_list)
         
+        
+        //rechargement de la partie cartes avec les éléments trié
+        
+        this.R.load_recipes_by_id(recipes , searchbar_list)
+        this.setRecettesValue()
+        updateFilters(searchbar_list)
+       
+        
+    }
+
+    setRecettesValue() {
+        const recipes_value = document.getElementById("nav_recettes");
+        const recipe_count = document.querySelectorAll("main article .card_recette");
+        recipes_value.innerText = recipe_count.length + " recettes"
     }
 }
 
@@ -79,5 +93,52 @@ class algorithm {
 function String_Flat(value) {
     return String(value).toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")
 }
+
+
+//a patcher
+function updateFilters(array) {
+    const filter = document.querySelectorAll("main nav .nav_selector .filter_box .item_list");
+    recipes.forEach(element => {
+        //création de la carte recette
+        if(array != undefined && array.includes(element.id)) {
+            let E = false;
+            filter.forEach(item => {
+                
+                console.log("text = " + item.innerHTML)
+                if(String(item.innerText) == String(element.appliance).toLowerCase()) {
+                     E = true
+                     return 1;
+                     
+                }
+
+                element.ustensils.forEach(elem => {
+                    if(String(item.innerText) == String(elem).toLowerCase()) {
+                        E = true
+                        return 1;                 
+                    }   
+                })
+
+                element.ingredients.forEach(elem =>{
+                        
+                    if(String(item.innerText) == String(elem.ingredient).toLowerCase()) {
+                        E = true;
+                        return 1;
+                        
+                    }
+                })
+
+                if(E == false) {
+                    
+                    item.innerHTML = "";
+                    
+                }
+            
+            })
+
+        }
+    })
+}
+
+
 
 export default algorithm

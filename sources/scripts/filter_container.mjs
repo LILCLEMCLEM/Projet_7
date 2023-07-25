@@ -131,6 +131,7 @@ class Filter_container {
     let ustensils_list = [];
     recipes.forEach((element) => {
       element.ustensils.forEach((items) => {
+        
         if (!ustensils_list.includes(items)) {
           ustensils_list.push(String(items).toLowerCase());
         }
@@ -168,6 +169,9 @@ class Filter_container {
       console.log(filtered_list);
 
       filtered_list.forEach((element) => {
+        
+
+
         const item_list = document.createElement("p");
         item_list.setAttribute("class", "item_list");
         item_list.textContent = element;
@@ -177,6 +181,7 @@ class Filter_container {
         this.addToList(item_list);
       });
       return filter_ustensils;
+
     });
     
     return filter_ustensils;
@@ -211,6 +216,7 @@ class Filter_container {
         
         close.remove();
         al.searchbar_filter_items(String(inputSearchBar.value))
+        al.setRecettesValue();
       });
       text.innerText = item.innerHTML;
       container.appendChild(text);
@@ -218,6 +224,7 @@ class Filter_container {
       filtered.appendChild(container);
       
       al.searchbar_filter_items(String(inputSearchBar.value))
+      al.setRecettesValue()
       
 
     });
