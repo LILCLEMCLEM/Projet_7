@@ -6,7 +6,7 @@ class algorithm {
     constructor (){
         this.search_length = 0;
         this.R = new Recipes_Container()
-        this.f = new Filter_container();
+        this.F = new Filter_container();
         
     }
     
@@ -27,7 +27,7 @@ class algorithm {
                 this.R.load_recipes(recipes);
                 this.setRecettesValue()
                 
-                this.f.load_filters(recipes)
+                this.F.load_filters(recipes)
                 
             }
         })    
@@ -39,7 +39,7 @@ class algorithm {
         const recipes_value = document.getElementById("nav_recettes")
         //fonction pour filtrer les items selon la searchbar et les filtres
         var searchbar_list = [];
-        console.log(input);
+       
         
         //insere les élément dont le titre contient la chaine de caractère "input"
         recipes.forEach(element => {
@@ -85,7 +85,7 @@ class algorithm {
         
         this.R.load_recipes_by_id(recipes , searchbar_list)
         this.setRecettesValue()
-        this.f.load_filters(recipes)
+        this.F.load_filters(recipes)
         updateFilters(searchbar_list)
        
         
@@ -123,7 +123,7 @@ function updateFilters(array) {
     
     let filtered = []
     filter_element.forEach(element => {
-        console.log(element.innerText)
+        
         recipes.forEach(elem =>{
             if(array != undefined && array.includes(elem.id)) {
                 

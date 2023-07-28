@@ -42,7 +42,7 @@ class Filter_container {
 
     ingredientInput.addEventListener("input", (element) => {
       var filtered_list = [];
-      console.log(ingredientInput.value);
+     
       filter_ingredients.innerHTML = "";
 
       ingredients_list.forEach((element) => {
@@ -51,7 +51,7 @@ class Filter_container {
         }
       });
 
-      console.log(ingredients_list);
+      
 
       filtered_list.forEach((element) => {
         const item_list = document.createElement("p");
@@ -96,7 +96,7 @@ class Filter_container {
 
     appareilInput.addEventListener("input", (element) => {
       var filtered_list = [];
-      console.log(appareilInput.value);
+     
       filter_appareils.innerHTML = "";
 
       appareil_list.forEach((element) => {
@@ -105,7 +105,7 @@ class Filter_container {
         }
       });
 
-      console.log(appareil_list);
+      
 
       filtered_list.forEach((element) => {
         const item_list = document.createElement("p");
@@ -157,7 +157,7 @@ class Filter_container {
 
     ustencilsInput.addEventListener("input", (element) => {
       var filtered_list = [];
-      console.log(ustencilsInput.value);
+     
       filter_ustensils.innerHTML = "";
 
       ustensils_list.forEach((element) => {
@@ -166,7 +166,7 @@ class Filter_container {
         }
       });
 
-      console.log(filtered_list);
+     
 
       filtered_list.forEach((element) => {
         

@@ -21,7 +21,7 @@ class Recipes_Container{
                         })
 
                         element.ustensils.forEach(items => {
-                            console.log(items)
+                            
                             if(child.innerText == String(items).toLowerCase()) {
                                 Existe = true;
                             }
@@ -128,7 +128,7 @@ class Recipes_Container{
                         })
 
                         element.ustensils.forEach(items => {
-                            console.log(items)
+                           
                             if(child.innerText == String(items).toLowerCase()) {
                                 Existe = 1;
                             }
