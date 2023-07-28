@@ -26,7 +26,7 @@ class Recipes_Container{
                                 Existe = true;
                             }
                         })
-
+                        
                         if(child.innerText == String(element.appliance).toLowerCase()) {
                             Existe = true;
                         }
@@ -134,7 +134,7 @@ class Recipes_Container{
                             }
                         })
 
-                        if(child.innerText == String(element.appliances).toLowerCase()) {
+                        if(child.innerText == String(element.appliance).toLowerCase()) {
                             Existe = 1;
                         }
                     }

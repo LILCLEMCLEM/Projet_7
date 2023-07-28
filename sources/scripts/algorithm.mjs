@@ -1,9 +1,13 @@
 import { recipes } from "./recipes.mjs";
 import Recipes_Container from "./Recipes Container.mjs"
+import Filter_container from "./filter_container.mjs";
+
 class algorithm {
     constructor (){
         this.search_length = 0;
         this.R = new Recipes_Container()
+        this.f = new Filter_container();
+        
     }
     
     searchbar_event() {
@@ -17,10 +21,14 @@ class algorithm {
             
             if(this.search_length > 2) {
                 this.searchbar_filter_items(String(String_Flat(inputSearchBar.value)));
+                
             }
             else {
                 this.R.load_recipes(recipes);
-                recipes_value.innerText = "50 recettes";
+                this.setRecettesValue()
+                
+                this.f.load_filters(recipes)
+                
             }
         })    
     }
@@ -51,12 +59,18 @@ class algorithm {
             element.ingredients.forEach(items => {
                 if(String(String_Flat(items)).includes(input)) {
                     searchbar_list.push(element.id);
+                    return 0;
                 }
             })
+
+            
+                  
+            
+            
         })
 
 
-
+        
         
         //fonction pour filtrer les doublons dans la liste
         
@@ -65,11 +79,22 @@ class algorithm {
         })
         //------------------------------------------------
 
-        console.log(searchbar_list)
-        recipes_value.innerText = String(searchbar_list.length) + " recettes";
-        //rechargement de la partie cartes avec les éléments trié
-        this.R.load_recipes_by_id(recipes , searchbar_list)
         
+        
+        //rechargement de la partie cartes avec les éléments trié
+        
+        this.R.load_recipes_by_id(recipes , searchbar_list)
+        this.setRecettesValue()
+        this.f.load_filters(recipes)
+        updateFilters(searchbar_list)
+       
+        
+    }
+
+    setRecettesValue() {
+        const recipes_value = document.getElementById("nav_recettes");
+        const recipe_count = document.querySelectorAll("main article .card_recette");
+        recipes_value.innerText = recipe_count.length + " recettes"
     }
 }
 
@@ -79,5 +104,53 @@ class algorithm {
 function String_Flat(value) {
     return String(value).toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")
 }
+
+
+//a patcher
+function updateFilters(array) {
+    const filter_element = document.querySelectorAll("main nav .nav_selector .filter_box .item_list");
+    const ingredients_item = document.getElementById("filter_appareils_items");
+    ingredients_item.innerHTML = "";
+
+    const ustensils_item = document.getElementById("filter_ustensils_items");
+    ustensils_item.innerHTML = "";
+
+    const ingredient_list = document.getElementById("filter_ingredient_items");
+    ingredient_list.innerHTML = "";
+    
+    
+    let r = new Filter_container();
+    
+    let filtered = []
+    filter_element.forEach(element => {
+        console.log(element.innerText)
+        recipes.forEach(elem =>{
+            if(array != undefined && array.includes(elem.id)) {
+                
+                if(String_Flat(elem.appliance) == String_Flat(element.innerText)) {
+                    
+                    filtered.push(elem);
+                    return 0;
+                }
+
+                elem.ustensils.forEach(e => {
+                    if(e == element.innerText) {
+                        filtered.push(elem);
+                        return 0;
+                    }
+                })
+            }
+
+            
+        })
+    })
+    if(array == undefined) {
+        r.load_filters(recipes);
+    }
+    else{r.load_filters(filtered);}
+
+}
+
+
 
 export default algorithm
