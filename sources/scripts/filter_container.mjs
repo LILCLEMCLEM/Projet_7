@@ -206,13 +206,13 @@ class Filter_container {
       const inputSearchBar = document.getElementById("header_search");
       const container = document.createElement("div");
       container.setAttribute("class", "filterActive");
-      container.setAttribute("id", item.innerHTML);
+      container.setAttribute("id", item.innerText);
       const text = document.createElement("p");
 
       const icon = document.createElement("i");
       icon.setAttribute("class", "fa-solid fa-xmark");
       icon.addEventListener("click", () => {
-        close = document.getElementById(item.innerHTML);
+        close = document.getElementById(item.innerText);
         
         close.remove();
         al.searchbar_filter_items(String(inputSearchBar.value))

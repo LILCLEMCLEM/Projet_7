@@ -368,3 +368,129 @@ main article .card_recette .ingredients_display .ingredient_dosage {
     color: #7a7a7a;
 }
 
+@media all and (width < 955px ) and (width > 600px) {
+    header .header_search {
+        top: 460px;
+    }
+    header .fa-solid.fa-magnifying-glass {
+        top: 475px;
+        left: 78%
+    }
+
+    header p.header_text {
+        width: 90%;
+        left: 5%
+    }
+
+    main nav .nav_selector  {
+        
+
+        margin-top: 40px;
+        flex-direction: column;
+    }
+
+    main nav .nav_recettes {
+        margin-top: 10px;
+        width: 300px;
+        position: absolute;
+        
+       
+        margin-left: 20px;
+        align-self: start;
+    }
+
+
+
+    main article {
+        margin-top: 0px;
+    }
+}
+
+@media all and (width < 601px ) {
+    header .header_search {
+        top: 460px;
+    }
+    header .fa-solid.fa-magnifying-glass {
+        top: 475px;
+        left: 78%
+    }
+
+    header p.header_text {
+        width: 90%;
+        left: 5%
+    }
+
+    main nav .nav_selector  {
+        
+
+        margin-top: 40px;
+        flex-direction: column;
+    }
+
+    main nav .nav_recettes {
+        margin-top: 10px;
+        width: 300px;
+        position: absolute;
+        
+       
+        margin-left: 20px;
+        align-self: start;
+    }
+
+    header {
+        height: 400px;
+    }
+
+    header img.header_logo {
+        left:10%;
+        width: 70%;
+        height: auto;
+    }
+
+    main article {
+        margin-top: 0px;
+    }
+
+    header .header_search {
+        z-index: 99;
+        width: 78%;
+        left: 10%;
+        position: fixed;
+        top: 90%;
+    }
+
+    header .header_search::placeholder{
+        opacity: 0;
+    }
+
+    header .fa-solid.fa-magnifying-glass {
+        z-index: 100;
+        position: fixed;
+        top: 91.5%;
+        left: 75%;
+    }
+
+    header p.header_text {
+        font-size: 20px;
+    }
+
+    header .header_img {
+        height: 400px;
+    }
+
+    main article .card_recette {
+        width: 80%;
+    }
+
+    main article .card_recette .duration {
+        left:220px
+    }
+
+    main article .card_recette .recette {
+        width: 80%;
+    }
+
+    main article .card_recette .ingredients_display {
+        width :80%
+    }
+}

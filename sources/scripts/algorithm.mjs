@@ -6,6 +6,7 @@ class algorithm {
     constructor (){
         this.search_length = 0;
         this.R = new Recipes_Container()
+        this.f = new Filter_container();
         
     }
     
@@ -20,11 +21,14 @@ class algorithm {
             
             if(this.search_length > 2) {
                 this.searchbar_filter_items(String(String_Flat(inputSearchBar.value)));
+                
             }
             else {
                 this.R.load_recipes(recipes);
                 this.setRecettesValue()
-                updateFilters();
+                
+                this.f.load_filters(recipes)
+                
             }
         })    
     }
@@ -55,8 +59,14 @@ class algorithm {
             element.ingredients.forEach(items => {
                 if(String(String_Flat(items)).includes(input)) {
                     searchbar_list.push(element.id);
+                    return 0;
                 }
             })
+
+            
+                  
+            
+            
         })
 
 
@@ -75,6 +85,7 @@ class algorithm {
         
         this.R.load_recipes_by_id(recipes , searchbar_list)
         this.setRecettesValue()
+        this.f.load_filters(recipes)
         updateFilters(searchbar_list)
        
         
@@ -97,46 +108,47 @@ function String_Flat(value) {
 
 //a patcher
 function updateFilters(array) {
-    const filter = document.querySelectorAll("main nav .nav_selector .filter_box .item_list");
-    recipes.forEach(element => {
-        //création de la carte recette
-        if(array != undefined && array.includes(element.id)) {
-            let E = false;
-            filter.forEach(item => {
+    const filter_element = document.querySelectorAll("main nav .nav_selector .filter_box .item_list");
+    const ingredients_item = document.getElementById("filter_appareils_items");
+    ingredients_item.innerHTML = "";
+
+    const ustensils_item = document.getElementById("filter_ustensils_items");
+    ustensils_item.innerHTML = "";
+
+    const ingredient_list = document.getElementById("filter_ingredient_items");
+    ingredient_list.innerHTML = "";
+    
+    
+    let r = new Filter_container();
+    
+    let filtered = []
+    filter_element.forEach(element => {
+        console.log(element.innerText)
+        recipes.forEach(elem =>{
+            if(array != undefined && array.includes(elem.id)) {
                 
-                console.log("text = " + item.innerHTML)
-                if(String(item.innerText) == String(element.appliance).toLowerCase()) {
-                     E = true
-                     return 1;
-                     
+                if(String_Flat(elem.appliance) == String_Flat(element.innerText)) {
+                    
+                    filtered.push(elem);
+                    return 0;
                 }
 
-                element.ustensils.forEach(elem => {
-                    if(String(item.innerText) == String(elem).toLowerCase()) {
-                        E = true
-                        return 1;                 
-                    }   
-                })
-
-                element.ingredients.forEach(elem =>{
-                        
-                    if(String(item.innerText) == String(elem.ingredient).toLowerCase()) {
-                        E = true;
-                        return 1;
-                        
+                elem.ustensils.forEach(e => {
+                    if(e == element.innerText) {
+                        filtered.push(elem);
+                        return 0;
                     }
                 })
+            }
 
-                if(E == false) {
-                    
-                    item.innerHTML = "";
-                    
-                }
             
-            })
-
-        }
+        })
     })
+    if(array == undefined) {
+        r.load_filters(recipes);
+    }
+    else{r.load_filters(filtered);}
+
 }
 
 
