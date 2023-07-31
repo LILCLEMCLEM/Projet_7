@@ -1,12 +1,13 @@
 import { recipes } from "./recipes.mjs";
 import Recipes_Container from "./Recipes Container.mjs"
 import Filter_container from "./filter_container.mjs";
-
+import searcher from "./functions.mjs"
 class algorithm {
     constructor (){
         this.search_length = 0;
         this.R = new Recipes_Container()
         this.F = new Filter_container();
+        this.s =  new searcher();
         
     }
     
@@ -43,21 +44,21 @@ class algorithm {
         
         //insere les élément dont le titre contient la chaine de caractère "input"
         recipes.forEach(element => {
-            if(String(String_Flat(element.name)).includes(input)){
+            if(this.s.findElem(element.name , input) == true){
                 searchbar_list.push(element.id);
                 return 0;   // passe a l'itération suivante
                 
                 
             } 
 
-             if(String(String_Flat(element.description)).includes(input)) {
-                searchbar_list.push(element.id);
+              if(this.s.findElem(element.description , input)) {
+                 searchbar_list.push(element.id);
                 
-                return 0; // passe a l'itération suivante
+                 return 0; // passe a l'itération suivante
                 
-            }
+             }
             element.ingredients.forEach(items => {
-                if(String(String_Flat(items)).includes(input)) {
+                if(this.s.findElem(items , input)) {
                     searchbar_list.push(element.id);
                     return 0;
                 }
@@ -77,6 +78,7 @@ class algorithm {
         searchbar_list = searchbar_list.filter(function(item, pos, self) {
             return self.indexOf(item) == pos;
         })
+        console.log(searchbar_list)
         //------------------------------------------------
 
         
@@ -101,7 +103,7 @@ class algorithm {
 
 
 //supprimer les majuscules et les accents
-function String_Flat(value) {
+export function String_Flat(value) {
     return String(value).toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")
 }
 
