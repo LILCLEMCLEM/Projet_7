@@ -1,5 +1,5 @@
-import Recipes_Container from "./Recipes Container.mjs";
-import { recipes } from "./recipes.mjs";
+
+
 import algorithm from "./algorithm.mjs";
 //test
 
@@ -40,7 +40,7 @@ class Filter_container {
     });
     const ingredientInput = document.getElementById("ingredient_input");
 
-    ingredientInput.addEventListener("input", (element) => {
+    ingredientInput.addEventListener("input", () => {
       var filtered_list = [];
      
       filter_ingredients.innerHTML = "";
@@ -94,7 +94,7 @@ class Filter_container {
 
     const appareilInput = document.getElementById("appareil_input");
 
-    appareilInput.addEventListener("input", (element) => {
+    appareilInput.addEventListener("input", () => {
       var filtered_list = [];
      
       filter_appareils.innerHTML = "";
@@ -155,7 +155,7 @@ class Filter_container {
     
     const ustencilsInput = document.getElementById("ustencil_input");
 
-    ustencilsInput.addEventListener("input", (element) => {
+    ustencilsInput.addEventListener("input", () => {
       var filtered_list = [];
      
       filter_ustensils.innerHTML = "";
@@ -201,7 +201,7 @@ class Filter_container {
 
       //end doublons
 
-      let tc = new Recipes_Container();     
+         
       let al = new algorithm();
       const inputSearchBar = document.getElementById("header_search");
       const container = document.createElement("div");
@@ -212,7 +212,7 @@ class Filter_container {
       const icon = document.createElement("i");
       icon.setAttribute("class", "fa-solid fa-xmark");
       icon.addEventListener("click", () => {
-        close = document.getElementById(item.innerText);
+        let close = document.getElementById(item.innerText);
         
         close.remove();
         al.searchbar_filter_items(String(inputSearchBar.value))
