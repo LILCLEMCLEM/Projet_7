@@ -6,8 +6,11 @@ class searcher {
     }
 
     findElem(element , input) {
+        
         element = String_Flat(element);
         input = String_Flat(input)
+        
+        
         let exist = false;
         let index = 0;
         for(let i = 0 ; i < element.length ; i++) {
@@ -29,6 +32,7 @@ class searcher {
                 index = 0;
             }
         }
+        if(input == "") {return true}
         return false
     }
     

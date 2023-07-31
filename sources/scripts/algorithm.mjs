@@ -12,7 +12,7 @@ class algorithm {
     }
     
     searchbar_event() {
-        const recipes_value = document.getElementById("nav_recettes")
+        
         //fonction pour récupérer la taille de la chaine de caractère inséré dans la searchbar
         //si elle est > 2 , alors on filtres les données
         const inputSearchBar = document.getElementById("header_search");
@@ -37,7 +37,7 @@ class algorithm {
     
 
     searchbar_filter_items(input) {
-        const recipes_value = document.getElementById("nav_recettes")
+        
         //fonction pour filtrer les items selon la searchbar et les filtres
         var searchbar_list = [];
        

@@ -1,15 +1,18 @@
-import Recipes_Container from "./Recipes Container.mjs";
-import { recipes } from "./recipes.mjs";
+
 import algorithm from "./algorithm.mjs";
+import searcher from "./functions.mjs"
 //test
 
 class Filter_container {
-  constructor() {}
+  constructor() {
+    this.s = new searcher()
+  }
 
   load_filters(recipes) {
     this.load_ingredients(recipes);
     this.load_appareil(recipes);
     this.load_ustenciles(recipes);
+    
   }
 
 
@@ -19,7 +22,7 @@ class Filter_container {
     let ingredients_list = [];
     recipes.forEach((element) => {
       element.ingredients.forEach((items) => {
-        if (!ingredients_list.includes(items.ingredients)) {
+        if (!this.s.findElem(ingredients_list , items.ingredients)) {
           ingredients_list.push(String(items.ingredient).toLowerCase());
         }
       });
@@ -40,13 +43,13 @@ class Filter_container {
     });
     const ingredientInput = document.getElementById("ingredient_input");
 
-    ingredientInput.addEventListener("input", (element) => {
+    ingredientInput.addEventListener("input", () => {
       var filtered_list = [];
      
       filter_ingredients.innerHTML = "";
 
       ingredients_list.forEach((element) => {
-        if (element.includes(String(ingredientInput.value).toLowerCase())) {
+        if (this.s.findElem(element , ingredientInput.value) == true) {
           filtered_list.push(element);
         }
       });
@@ -73,7 +76,7 @@ class Filter_container {
     const filter_appareils = document.getElementById("filter_appareils_items");
     let appareil_list = [];
     recipes.forEach((element) => {
-      if (!appareil_list.includes(element.appliance)) {
+      if (!this.s.findElem(appareil_list , element.appliance)) {
         appareil_list.push(String(element.appliance).toLowerCase());
       }
     });
@@ -94,13 +97,13 @@ class Filter_container {
 
     const appareilInput = document.getElementById("appareil_input");
 
-    appareilInput.addEventListener("input", (element) => {
+    appareilInput.addEventListener("input", () => {
       var filtered_list = [];
      
       filter_appareils.innerHTML = "";
 
       appareil_list.forEach((element) => {
-        if (element.includes(String(appareilInput.value).toLowerCase())) {
+        if (this.s.findElem(element , appareilInput.value)) {
           filtered_list.push(element);
         }
       });
@@ -132,7 +135,7 @@ class Filter_container {
     recipes.forEach((element) => {
       element.ustensils.forEach((items) => {
         
-        if (!ustensils_list.includes(items)) {
+        if (!this.s.findElem(ustensils_list , items)) {
           ustensils_list.push(String(items).toLowerCase());
         }
       });
@@ -155,13 +158,13 @@ class Filter_container {
     
     const ustencilsInput = document.getElementById("ustencil_input");
 
-    ustencilsInput.addEventListener("input", (element) => {
+    ustencilsInput.addEventListener("input", () => {
       var filtered_list = [];
      
       filter_ustensils.innerHTML = "";
 
       ustensils_list.forEach((element) => {
-        if (element.includes(String(ustencilsInput.value).toLowerCase())) {
+        if (this.s.findElem(element , ustencilsInput.value)) {
           filtered_list.push(element);
         }
       });
@@ -201,7 +204,7 @@ class Filter_container {
 
       //end doublons
 
-      let tc = new Recipes_Container();     
+          
       let al = new algorithm();
       const inputSearchBar = document.getElementById("header_search");
       const container = document.createElement("div");
@@ -212,7 +215,7 @@ class Filter_container {
       const icon = document.createElement("i");
       icon.setAttribute("class", "fa-solid fa-xmark");
       icon.addEventListener("click", () => {
-        close = document.getElementById(item.innerText);
+        let close = document.getElementById(item.innerText);
         
         close.remove();
         al.searchbar_filter_items(String(inputSearchBar.value))

@@ -1,11 +1,12 @@
+import searcher from "./functions.mjs"
 class Recipes_Container{
     constructor () {
-        
+        this.s = new searcher()
     }
 
     load_recipes(recipes) {
         const recette_section = document.querySelector("article");
-        recette_section.innerHTML = ""
+        recette_section.innerHTML = "";
         recipes.forEach(element => {
             
                 let Existe = false;
@@ -115,7 +116,7 @@ class Recipes_Container{
         recette_section.innerHTML = "";
         recipes.forEach(element => {
             //création de la carte recette
-            if(array.includes(element.id)) {
+            if(this.s.findElem(array , element.id)) {
                 let Existe = 0;
                 //add-------------------------------------------- 
                 if(filtered.childElementCount > 0) {
