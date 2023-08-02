@@ -27,7 +27,6 @@ class algorithm {
             else {
                 this.R.load_recipes(recipes);
                 this.setRecettesValue()
-                
                 this.F.load_filters(recipes)
                 
             }
@@ -75,7 +74,7 @@ class algorithm {
         
         //fonction pour filtrer les doublons dans la liste
         
-        searchbar_list = searchbar_list.filter(function(item, pos, self) {
+        searchbar_list = searchbar_list.filter(function(item, pos, self) {  //a changer
             return self.indexOf(item) == pos;
         })
         console.log(searchbar_list)
