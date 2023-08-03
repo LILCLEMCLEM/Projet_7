@@ -70,9 +70,7 @@ class algorithm {
 
 
         
-        searchbar_list = searchbar_list.filter(function(item, pos, self) {  //a changer
-            return self.indexOf(item) == pos;
-        })
+        
         console.log(searchbar_list)
         //------------------------------------------------
 
