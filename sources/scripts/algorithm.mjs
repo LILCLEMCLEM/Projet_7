@@ -42,37 +42,33 @@ class algorithm {
        
         
         //insere les élément dont le titre contient la chaine de caractère "input"
-        recipes.forEach(element => {
-            if(this.s.findElem(element.name , input)){
-                searchbar_list.push(element.id);
-                return 0;   // passe a l'itération suivante
+        for(let i = 0; i < recipes.length; i++) {
+            console.log(recipes.length, i)
+            if(this.s.findElem(recipes[i].name , input)){
+                searchbar_list.push(recipes[i].id);
+                continue;
                 
                 
             } 
 
-              if(this.s.findElem(element.description , input)) {
-                 searchbar_list.push(element.id);
+              if(this.s.findElem(recipes[i].description , input)) {
+                 searchbar_list.push(recipes[i].id);
                 
-                 return 0; // passe a l'itération suivante
+                 continue;// passe a l'itération suivante
                 
              }
-            element.ingredients.forEach(items => {
-                if(this.s.findElem(items , input)) {
-                    searchbar_list.push(element.id);
-                    return 0;
+             for(let j = 0; j < recipes[i].ingredients.length; j++) {
+                if(this.s.findElem(recipes[i].ingredients[j] , input)) {
+                    searchbar_list.push(recipes[i].id);
+                    continue;
                 }
-            })
-
+             }
             
-                  
-            
-            
-        })
+        }
+       
+       
 
 
-        
-        
-        //fonction pour filtrer les doublons dans la liste
         
         searchbar_list = searchbar_list.filter(function(item, pos, self) {  //a changer
             return self.indexOf(item) == pos;
