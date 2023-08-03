@@ -43,7 +43,7 @@ class algorithm {
         
         //insere les élément dont le titre contient la chaine de caractère "input"
         recipes.forEach(element => {
-            if(this.s.findElem(element.name , input) == true){
+            if(this.s.findElem(element.name , input)){
                 searchbar_list.push(element.id);
                 return 0;   // passe a l'itération suivante
                 

@@ -116,7 +116,7 @@ class Recipes_Container{
         recette_section.innerHTML = "";
         recipes.forEach(element => {
             //création de la carte recette
-            if(this.s.findElem(array , element.id)) {
+            if(array.includes(element.id)) {
                 let Existe = 0;
                 //add-------------------------------------------- 
                 if(filtered.childElementCount > 0) {

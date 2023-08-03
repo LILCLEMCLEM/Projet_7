@@ -11,24 +11,24 @@ class searcher {
         input = String_Flat(input)
         
         
-        let exist = false;
+        
         let index = 0;
         for(let i = 0 ; i < element.length ; i++) {
             
             
             //console.log(exist , index)
             if(element[i] == input[index]) {
-                exist = true;
+                
                 index ++;
                 
                 if(index == input.length) {
-                    return exist;
+                    return true;
                 }
                 
             }
                 
             else {
-                exist = false;
+                
                 index = 0;
             }
         }
