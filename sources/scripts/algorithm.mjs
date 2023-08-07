@@ -1,7 +1,7 @@
 import { recipes } from "./recipes.mjs";
 import Recipes_Container from "./Recipes Container.mjs"
 import Filter_container from "./filter_container.mjs";
-
+var t;
 class algorithm {
     constructor (){
         this.search_length = 0;
@@ -18,7 +18,7 @@ class algorithm {
         inputSearchBar.addEventListener("input" , () => {
            
             this.search_length = String(inputSearchBar.value).length;   
-            
+            t = timer("Input -> load")
             if(this.search_length > 2) {
                 this.searchbar_filter_items(String(String_Flat(inputSearchBar.value)));
                 
@@ -28,6 +28,7 @@ class algorithm {
                 this.setRecettesValue()
                 
                 this.F.load_filters(recipes)
+                t.stop();
                 
             }
         })    
@@ -87,6 +88,7 @@ class algorithm {
         this.setRecettesValue()
         this.F.load_filters(recipes)
         updateFilters(searchbar_list)
+        t.stop();
        
         
     }
@@ -151,6 +153,16 @@ function updateFilters(array) {
 
 }
 
+var timer = function(name) {
+    var start = new Date();
+    return {
+        stop: function() {
+            var end  = new Date();
+            var time = end.getTime() - start.getTime();
+            console.log('Timer:', name, 'finished in', time, 'ms');
+        }
+    }
+};
 
 
 export default algorithm
