@@ -18,5 +18,8 @@
   "homepage": "https://github.com/LILCLEMCLEM/Projet_7#readme",
   "devDependencies": {
     "eslint": "^8.46.0"
+  },
+  "dependencies": {
+    "jsbench": "^1.2.0"
   }
 }

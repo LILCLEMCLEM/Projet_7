@@ -2,6 +2,7 @@ import { recipes } from "./recipes.mjs";
 import Recipes_Container from "./Recipes Container.mjs"
 import Filter_container from "./filter_container.mjs";
 import searcher from "./functions.mjs"
+var t;
 class algorithm {
     constructor (){
         this.search_length = 0;
@@ -10,16 +11,18 @@ class algorithm {
         this.s =  new searcher();
         
     }
+
+    
     
     searchbar_event() {
-        
+         
         //fonction pour récupérer la taille de la chaine de caractère inséré dans la searchbar
         //si elle est > 2 , alors on filtres les données
         const inputSearchBar = document.getElementById("header_search");
         inputSearchBar.addEventListener("input" , () => {
            
             this.search_length = String(inputSearchBar.value).length;   
-            
+            t = timer('Input -> load');
             if(this.search_length > 2) {
                 this.searchbar_filter_items(String(String_Flat(inputSearchBar.value)));
                 
@@ -28,6 +31,7 @@ class algorithm {
                 this.R.load_recipes(recipes);
                 this.setRecettesValue()
                 this.F.load_filters(recipes)
+                t.stop();
                 
             }
         })    
@@ -82,7 +86,7 @@ class algorithm {
         this.setRecettesValue()
         this.F.load_filters(recipes)
         updateFilters(searchbar_list)
-       
+        t.stop();
         
     }
 
@@ -145,6 +149,17 @@ function updateFilters(array) {
     else{r.load_filters(filtered);}
 
 }
+
+var timer = function(name) {
+    var start = new Date();
+    return {
+        stop: function() {
+            var end  = new Date();
+            var time = end.getTime() - start.getTime();
+            console.log('Timer:', name, 'finished in', time, 'ms');
+        }
+    }
+};
 
 
 
