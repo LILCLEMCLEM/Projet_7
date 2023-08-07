@@ -47,7 +47,7 @@ class algorithm {
         
         //insere les élément dont le titre contient la chaine de caractère "input"
         for(let i = 0; i < recipes.length; i++) {
-            console.log(recipes.length, i)
+            
             if(this.s.findElem(recipes[i].name , input)){
                 searchbar_list.push(recipes[i].id);
                 continue;
