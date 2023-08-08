@@ -73,12 +73,7 @@ class algorithm {
 
         
         
-        //fonction pour filtrer les doublons dans la liste
-        
-        searchbar_list = searchbar_list.filter(function(item, pos, self) {
-            return self.indexOf(item) == pos;
-        })
-        //------------------------------------------------
+       
 
         
         
