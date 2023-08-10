@@ -116,33 +116,33 @@ class Recipes_Container{
         recipes.forEach(element => {
             //création de la carte recette
             if(array.includes(element.id)) {
-                let Existe = 0;
+                let Existe = true;
                 //add-------------------------------------------- 
                 if(filtered.childElementCount > 0) {
                     for(const child of filtered.children) {
                         element.ingredients.forEach(items =>{
                         
                             if(child.innerText == String(items.ingredient).toLowerCase()) {
-                                Existe = 1;
+                                Existe = true;
                             }
                         })
 
                         element.ustensils.forEach(items => {
                            
                             if(child.innerText == String(items).toLowerCase()) {
-                                Existe = 1;
+                                Existe = true;
                             }
                         })
 
                         if(child.innerText == String(element.appliance).toLowerCase()) {
-                            Existe = 1;
+                            Existe = true;
                         }
                     }
                 }
 
 
                 //----------------------------------------------------
-                if(Existe == 1 || filtered.childElementCount == 0) {
+                if(Existe == true || filtered.childElementCount == 0) {
                     const card = document.createElement("section");
                     card.setAttribute("class" , "card_recette");
 

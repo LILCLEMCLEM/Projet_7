@@ -19,7 +19,7 @@ class Filter_container {
     let ingredients_list = [];
     recipes.forEach((element) => {
       element.ingredients.forEach((items) => {
-        if (!ingredients_list.includes(items.ingredients)) {
+        if (!ingredients_list.includes(items.ingredient)) {
           ingredients_list.push(String(items.ingredient).toLowerCase());
         }
       });
