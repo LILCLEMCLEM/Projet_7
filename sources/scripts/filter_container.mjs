@@ -22,7 +22,7 @@ class Filter_container {
     let ingredients_list = [];
     recipes.forEach((element) => {
       element.ingredients.forEach((items) => {
-        if (!this.s.findElem(ingredients_list , items.ingredients)) {
+        if (!this.s.findElem(ingredients_list , items.ingredient)) {
           ingredients_list.push(String(items.ingredient).toLowerCase());
         }
       });
