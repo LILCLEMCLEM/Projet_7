@@ -116,7 +116,7 @@ class Recipes_Container{
         recipes.forEach(element => {
             //création de la carte recette
             if(array.includes(element.id)) {
-                let Existe = true;
+                let Existe = false;
                 //add-------------------------------------------- 
                 if(filtered.childElementCount > 0) {
                     for(const child of filtered.children) {
