@@ -86,7 +86,12 @@ class algorithm {
         this.setRecettesValue()
         this.F.load_filters(recipes)
         updateFilters(searchbar_list)
-        t.stop();
+        try {
+            t.stop();
+        }
+        catch  {
+            console.log("")
+        }
         
     }
 
